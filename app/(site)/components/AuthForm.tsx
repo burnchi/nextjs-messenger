@@ -53,25 +53,26 @@ const AuthForm = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     // 提交时等待
     setIsLoading(true);
+    // console.log(data);
 
-    // if (variant === 'REGISTER') {
-    //   axios.post('/api/register', data)
-    //     .then(() => signIn('credentials', {
-    //       ...data,
-    //       redirect: false,
-    //     }))
-    //     .then((callback) => {
-    //       if (callback?.error) {
-    //         toast.error('Invalid credentials!');
-    //       }
+    if (variant === 'REGISTER') {
+      axios.post('/api/register', data)
+      // .then(() => signIn('credentials', {
+      //   ...data,
+      //   redirect: false,
+      // }))
+      // .then((callback) => {
+      //   if (callback?.error) {
+      //     toast.error('Invalid credentials!');
+      //   }
 
-    //       if (callback?.ok) {
-    //         router.push('/conversations')
-    //       }
-    //     })
-    //     .catch(() => toast.error('Something went wrong!'))
-    //     .finally(() => setIsLoading(false))
-    // }
+      //   if (callback?.ok) {
+      //     router.push('/conversations')
+      //   }
+      // })
+      .catch(() => toast.error('Something went wrong!'))
+      .finally(() => setIsLoading(false))
+    }
 
     // if (variant === 'LOGIN') {
     //   signIn('credentials', {
@@ -182,11 +183,11 @@ const AuthForm = () => {
           <div className="mt-6 flex gap-2">
             <AuthSocialButton
               icon={BsGithub}
-            onClick={() => socialAction('github')} 
+              onClick={() => socialAction('github')}
             />
             <AuthSocialButton
               icon={BsGoogle}
-            onClick={() => socialAction('google')} 
+              onClick={() => socialAction('google')}
             />
           </div>
         </div>
